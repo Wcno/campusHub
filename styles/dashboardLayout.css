@@ -1,0 +1,180 @@
+
+/* Se establecen las variables */
+:root {
+    --sidebar-color: rgba(5, 44, 151, 0.993);
+    --sidebar-items-hover: rgba(187, 187, 187, 0.479);
+    --sidebar-logo-tamano: 25%;
+    --sidebar-caja-perfil-bgColor: rgba(158, 156, 156, 0.37);
+    --sidebar-item-active: rgba(187, 187, 187, 0.7);
+  }
+
+  h1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2rem;
+  }
+
+  h3{
+        font-size: 1.1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+  }
+
+
+
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* cuando el sibebar esta oculto desde el inicio, para pantallas < 1024px */
+.sidebar-hidden{
+    width:max-content;
+    background-color: white;
+}
+
+/*cuando el sidebar esta visible  para pantallas >= 1024px*/
+.sidebar{
+    width: 50%;
+    background-color: var(--sidebar-color);
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin-right: 10px;
+}
+
+/*cada enlace dentro del sidebar*/
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    display:flex;
+    gap:10px;
+    padding:10px;
+    border-radius:10px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover{
+    background-color: var(--sidebar-items-hover);
+}
+
+/*logo que estará dentro del sidebar*/
+.logo{
+    width: var(--sidebar-logo-tamano);
+}
+
+/* abarca el logo y el nombre de la página*/
+.nav-header{
+    display: flex;
+    gap: 20px;
+    margin-bottom:55px;
+    flex-wrap: wrap;
+}
+
+/* abarca los enlaces a otras páginas como una caja, para aplicar propiedades convenientes*/
+.nav-links{
+    display: flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+/*linea divisora de contenido en el sidebar*/
+hr{
+    margin: 30px 0;
+}
+
+/*abarca el logout, nombre del usuario y su correo dentro del sidebar*/
+
+.caja-perfil{
+    background-color: var(--sidebar-caja-perfil-bgColor);
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    padding:25px;
+    border-radius: 20px;
+    margin:15px;
+}
+
+.caja-perfil-hidden{
+    display: none;
+}
+
+.contenido-principal-sidebar-hidden {
+    display: none;
+}
+
+
+.contenido-principal-sidebar {
+    display: block;
+}
+
+.fa-circle-user{
+    font-size: 50px;
+}
+
+.fa-arrow-right-from-bracket{
+    font-size:25px;
+}
+.perfil-logout{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.contenido-principal-sidebar{
+    margin:15px;
+}
+
+.fa-bars{
+    font-size:20px;
+    cursor:pointer;
+    margin:10px;
+}
+
+.perfil-info{
+    gap: 0;
+}
+
+.sidebar-item.active {
+    background-color: var(--sidebar-item-active);
+    font-weight: bold;
+}
+
+.nombre-correo, .nombre-usuario{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+@media (min-width: 1024px){ 
+    .sidebar{
+        width:10%;
+    }
+    #menu-toggle{
+        display:none;
+    }
+}
+
+@media (min-width: 614px){ 
+    .sidebar{
+        width:15%;
+    }
+
+}
+
+
+
+
+

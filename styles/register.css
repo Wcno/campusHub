@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bdd0f7;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event-info {
+    flex: 1;
+    background-color: #2a3a5e;
+    color: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.event-info h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.event-info p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.host-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.host-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.register-form {
+    flex: 1;
+    padding: 40px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.register-form h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.register-form p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.register-form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: #5cb85c;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.login-link {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}

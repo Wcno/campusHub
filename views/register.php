@@ -17,7 +17,7 @@
         <div class="host-info">
             <img src="../images/logo.png" alt="Logo de CampusHub"> <!-- Asegúrate de tener una imagen de logo -->
             <p>Gestionado por:</p>
-            <h3>PanaEvents</h3>
+            <h3>CampusHub</h3>
             <p>Optimización en gestión de eventos</p>
         </div>
     </div>

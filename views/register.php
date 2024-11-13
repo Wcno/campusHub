@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario - PanaEvents</title>
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../styles/register.css">
 </head>
 <body>
 
 <div class="container">
     <!-- Sección de Información del Evento o Aplicación -->
     <div class="event-info">
-        <h1>Bienvenido a PanaEvents</h1>
-        <p>Regístrate para acceder a nuestra plataforma y gestionar eventos de forma profesional.</p>
+        <h1>Bienvenido a CampusHub</h1>
+        <p>Regístrate para acceder a nuestra plataforma .</p>
         
         <div class="host-info">
-            <img src="../images/logo.png" alt="Logo de PanaEvents"> <!-- Asegúrate de tener una imagen de logo -->
+            <img src="../images/logo.png" alt="Logo de CampusHub"> <!-- Asegúrate de tener una imagen de logo -->
             <p>Gestionado por:</p>
             <h3>PanaEvents</h3>
             <p>Optimización en gestión de eventos</p>

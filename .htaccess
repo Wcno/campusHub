@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Redirect requests to the appropriate .php file if it exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ $1.php [QSA,L]
+
+# Redirect root to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^$ index.php [QSA,L]
+

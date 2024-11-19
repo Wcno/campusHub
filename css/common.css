@@ -1,0 +1,42 @@
+:root {
+  --primary: #10b981;
+  --dark-primary: #059669;
+  --light-primary: #34d399;
+  --extra-light-primary: #6ee7b7;
+  --background: #d1fae5;
+  --text-accent: #022c22;
+  --text-primary: #030712;
+  --text-muted: #6b7280;
+  --border: #d1d5db;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body {
+  background: var(--background);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,161 @@
+.content-wrapper {
+}
+
+.sidebar-hidden {
+  width: max-content;
+  background-color: white;
+}
+
+/*cuando el sidebar esta visible  para pantallas >= 1024px*/
+.sidebar {
+  width: 80%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/*cada enlace dentro del sidebar*/
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a:hover,
+.nav-links a:active {
+  background-color: var(--light-primary);
+}
+
+/*logo que estará dentro del sidebar*/
+.logo {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* abarca el logo y el nombre de la página*/
+.nav-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* abarca los enlaces a otras páginas como una caja, para aplicar propiedades convenientes*/
+.nav-links {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.link-wrapper {
+  flex-grow: 1;
+}
+
+.nav-links-main {
+  border-bottom: solid 1px var(--border);
+}
+
+.nav-section-title {
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/*abarca el logout, nombre del usuario y su correo dentro del sidebar*/
+.caja-perfil {
+  background-color: var(--dark-primary);
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.caja-perfil-hidden {
+  display: none;
+}
+
+.contenido-principal-sidebar-hidden {
+  display: none;
+}
+
+.contenido-principal-sidebar {
+  display: block;
+}
+
+.perfil-logout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contenido-principal-sidebar {
+  margin: 15px;
+}
+
+.perfil-info {
+  gap: 0;
+  font-size: 0.875rem;
+}
+
+.sidebar-item {
+  transition: all 150ms ease-in-out;
+}
+
+.sidebar-item.active {
+  background-color: var(--light-primary);
+  font-weight: bold;
+}
+
+.nombre-correo,
+.nombre-usuario {
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  transition: all 150ms ease-in-out;
+}
+
+.logout-btn:hover,
+.logout-btn:active {
+  color: var(--text-accent);
+}
+
+#menu-toggle {
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  #menu-toggle {
+    display: none;
+  }
+
+  .content-wrapper {
+    margin-left: 16rem;
+    padding: 3rem 4rem;
+  }
+}
+
+@media (min-width: 614px) {
+  .sidebar {
+    width: 16rem;
+  }
+}

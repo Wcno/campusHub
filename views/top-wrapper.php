@@ -7,7 +7,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <div class="nav-header">
     <img
       class="logo"
-      src="../uploads/logo-test.png"
+      src="/uploads/logo-test.png"
       alt="logo" />
     <h1>CampusHub</h1>
   </div>

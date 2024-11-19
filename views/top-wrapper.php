@@ -1,3 +1,8 @@
+<?php
+$userRole = $_SESSION['role'] ?? null;
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
 <nav class="sidebar" id="sidebar">
   <div class="nav-header">
     <div id="menu-toggle">

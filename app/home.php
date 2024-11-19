@@ -14,10 +14,7 @@ require_once '../includes/bootstrap.php';
 </head>
 
 <body>
-  <?php loadComponent('top-wrapper', [
-    'currentPage' => $currentPage,
-    'userRole' => $userRole
-  ]) ?>
+  <?php loadComponent('top-wrapper') ?>
 
   <main class="content-wrapper">
     <header>

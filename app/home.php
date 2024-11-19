@@ -20,12 +20,15 @@ require_once '../includes/bootstrap.php';
   ]) ?>
 
   <main class="content-wrapper">
-    <h1 style="color: var(--text-primary)">Title</h1>
+    <header>
+      <h1>Title</h1>
+    </header>
+    <section>
+      Tu contenido
+    </section>
   </main>
 
   <?php loadComponent('bottom-wrapper') ?>
-
-
   <script src="/js/dashboardLayout.js" />
 </body>
 

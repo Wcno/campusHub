@@ -32,6 +32,15 @@ h3 {
   white-space: nowrap;
 }
 
+header {
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  letter-spacing: 0.05rem;
+  font-size: 1.325rem;
+}
+
 body {
   background: var(--background);
   margin: 0;

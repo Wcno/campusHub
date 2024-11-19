@@ -1,4 +1,6 @@
 .content-wrapper {
+  margin-left: 16rem;
+  padding: 3rem 4rem;
 }
 
 .sidebar-hidden {
@@ -8,7 +10,7 @@
 
 /*cuando el sidebar esta visible  para pantallas >= 1024px*/
 .sidebar {
-  width: 80%;
+  width: 16rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -136,26 +138,4 @@
 .logout-btn:hover,
 .logout-btn:active {
   color: var(--text-accent);
-}
-
-#menu-toggle {
-  cursor: pointer;
-  padding: 0 0.5rem;
-}
-
-@media (min-width: 1024px) {
-  #menu-toggle {
-    display: none;
-  }
-
-  .content-wrapper {
-    margin-left: 16rem;
-    padding: 3rem 4rem;
-  }
-}
-
-@media (min-width: 614px) {
-  .sidebar {
-    width: 16rem;
-  }
 }

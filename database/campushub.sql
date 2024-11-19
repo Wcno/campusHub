@@ -30,3 +30,13 @@ CREATE TABLE inscripciones (
 -- Inserting admin user
 INSERT INTO users (username, email, password, role, phone_number, age)
 VALUES ('admin', 'admin@admin.com', '$2y$10$7ITGd5n2N1noA2DL8VWuZ.njh3qZMJjD1Rxxm4KuHHD/GHmQkjYFq', 'admin', '123456789', 40);
+
+--changes to add table lugares
+CREATE TABLE lugares (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    capacity INT NOT NULL
+);
+ALTER TABLE eventos ADD lugar_id INT;
+ALTER TABLE eventos ADD FOREIGN KEY (lugar_id) REFERENCES lugares(id) ON DELETE CASCADE;
+ALTER TABLE eventos DROP COLUMN lugar;

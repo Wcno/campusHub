@@ -12,19 +12,20 @@ $pdo = db_connect();
     <title>Lista de Eventos</title>
     <link href="../../../css/common.css" rel="stylesheet" />
     <link href="../../../css/layout.css" rel="stylesheet" />
+    <link href="../../../css/list.css" rel="stylesheet" />
     
 </head>
 
 <body>
     <?php loadComponent('top-wrapper') ?>
 
-    <main class="container my-5">
-        <div class="card p-4 shadow-sm">
-            <header class="mb-4">
-                <h1 class="text-center">Lista de Eventos</h1>
+    <main class="container">
+   
+            <header>
+                <h1>Lista de Eventos</h1>
             </header>
             <section>
-                <table class="table table-striped table-bordered">
+                <table>
                     <thead>
                         <tr>
                             <th>Título</th>

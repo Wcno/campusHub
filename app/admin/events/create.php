@@ -13,75 +13,100 @@
     <title>Crear Evento</title>
     <link href="../../../css/common.css" rel="stylesheet" />
     <link href="../../../css/layout.css" rel="stylesheet" />
+    <link href="../../../css/create.css" rel="stylesheet" />
   </head>
 
   <body>
     <?php loadComponent('top-wrapper') ?>
 
-    <main class="content-wrapper">
-      <header>
-        <h1>Crear Evento</h1>
-      </header>
-      <section>
-    
+    <main class="container">
+    <header>
+        <h2>Crear Evento</h2>
+    </header>
+    <section>
         <!-- Formulario de creación de eventos -->
-      <form action="create.php" method="POST" enctype="multipart/form-data">
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" ><br><br>
-        
-        <label for="description">Descripción:</label>
-        <textarea id="description" name="description" ></textarea><br><br>
-        <label for="category">Categoría:</label>
-        <select id="category_id" name="category_id" >
-          <option value="">Selecciona una categoría</option>
-          <?php
-          $stmt = $pdo->query("SELECT * FROM category");
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<option value='{$row['id']}'>{$row['name']}</option>";
-          }
-          ?>
-        </select><br><br>
-        <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" ><br><br>
-        
-        <label for="time">Hora de Inicio:</label>
-        <input type="time" id="time" name="time" ><br><br>
-        
-        <label for="time_end">Hora de Fin:</label>
-        <input type="time" id="time_end" name="time_end" ><br><br>
-        
-        <label for="location">Ubicación:</label>
-        <select id="location_id" name="location_id" >
-          <option value="">Selecciona una ubicación</option>
-          <?php
-          $stmt = $pdo->query("SELECT * FROM locations");
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<option value='{$row['id']}'>{$row['name']}</option>";
-          }
-          ?>
-        </select><br><br>
-        
-        <label for="capacity">Capacidad:</label>
-        <input type="number" id="capacity" name="capacity" ><br><br>
-        
-        <label for="image">Imagen:</label>
-        <input type="file" id="image_url" name="image_url" ><br><br>
+        <form action="create.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title">
+            </div>
 
-        <label for="tag_id">Etiquetas:</label>
-          <select id="tag_id" name="tag_id" >
-          <option value="">Selecciona una etiqueta</option>
-          <?php
-          $stmt = $pdo->query("SELECT * FROM tags");
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<option value='{$row['id']}'>{$row['name']}</option>";
-          }
-          ?>
-          </select><br><br>
+            <div class="form-group">
+                <label for="category_id">Categoría:</label>
+                <select id="category_id" name="category_id">
+                    <option value="">Selecciona una categoría</option>
+                    <?php
+                    $stmt = $pdo->query("SELECT * FROM category");
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='{$row['id']}'>{$row['name']}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
 
-        <button type="submit">Crear Evento</button>
-      </form>
-      </section>
-    </main>
+            <div class="form-group">
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+            <div class="form-group">
+                <label for="time">Hora de Inicio:</label>
+                <input type="time" id="time" name="time">
+            </div>
+
+            <div class="form-group">
+                <label for="time_end">Hora de Fin:</label>
+                <input type="time" id="time_end" name="time_end">
+            </div>
+
+            <div class="form-group">
+                <label for="location_id">Ubicación:</label>
+                <select id="location_id" name="location_id">
+                    <option value="">Selecciona una ubicación</option>
+                    <?php
+                    $stmt = $pdo->query("SELECT * FROM locations");
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='{$row['id']}'>{$row['name']}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="capacity">Capacidad:</label>
+                <input type="number" id="capacity" name="capacity">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="description">Descripción:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+            <div class="form-group full-width upload-section">
+                <label for="image_url">Sube la Imagen del Evento:</label>
+                <input type="file" id="image_url" name="image_url" accept="image/*">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="tag_id">Etiquetas:</label>
+                <select id="tag_id" name="tag_id">
+                    <option value="">Selecciona una etiqueta</option>
+                    <?php
+                    $stmt = $pdo->query("SELECT * FROM tags");
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='{$row['id']}'>{$row['name']}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="cancel-button">Cancelar</button>
+                <button type="submit">Crear Evento</button>
+            </div>
+        </form>
+    </section>
+</main>
 
     <?php loadComponent('bottom-wrapper') ?>
     <script src="/js/dashboardLayout.js"></script>
@@ -102,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $capacity = $_POST['capacity'];
   $tag_id = $_POST['tag_id'];
   $image_url = null; 
-  
+
   if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] == UPLOAD_ERR_OK) {
       $image_url = $_FILES['image_url']['name'];
       if (move_uploaded_file($_FILES['image_url']['tmp_name'], "../../../uploads/" . $image_url)) {

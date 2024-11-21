@@ -23,7 +23,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <div class="nav-links nav-links-main">
       <a
         href="dashboard-layout.php?page=home.php"
-        class="sidebar-item <?php echo $currentPage == 'home.php' ? 'active' : '' ?>"><svg
+        class="sidebar-item <?php echo $currentPage == 'list.php' || $currentPage == 'view.php' ? 'active' : '' ?>"><svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
@@ -137,7 +137,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
     <div class="perfil-info">
       <h3 class="nombre-usuario">
-        <?php echo htmlspecialchars($_SESSION['username']); ?>
+        <?php echo htmlspecialchars($_SESSION['name']); ?>
       </h3>
       <p class="nombre-correo">
         <?php echo htmlspecialchars($_SESSION['email']); ?>

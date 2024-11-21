@@ -1,8 +1,8 @@
 <?php
 
 //importaciones de archivos
-require_once '../../includes/dbconnect.php';
-require_once '../../includes/bootstrap.php';
+require_once '../includes/dbconnect.php';
+require_once '../includes/bootstrap.php';
 
 // Obtener el ID del evento desde la URL
 $event_id = $_GET['id'];
@@ -77,9 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Detalle del Evento</title>
-    <link href="../../css/common.css" rel="stylesheet" />
-    <link href="../../css/layout.css" rel="stylesheet" />
-    <link href="../../css/view.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/layout.css" rel="stylesheet" />
+    <link href="../css/verEvento.css" rel="stylesheet">
 
 </head>
 
@@ -92,13 +92,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         </header>
 
         <section class="content">
-            <a href="list.php">
+            <a href="home.php">
                 <button class="btn-sec">Volver a eventos</button>
             </a>
             <!-- contenedor del evento -->
             <section class="event">
                 <h1 class="event-title"><?php echo htmlspecialchars($event['title']); ?></h1>
-                <img src="../../uploads/test-img-catalog.jpg" alt="Imagen del evento">
+                <img src="../uploads/test-img-catalog.jpg" alt="Imagen del evento">
                 <div class="event-detail">
                     <p><strong>Descripción:</strong> <?php echo htmlspecialchars($event['description']); ?></p>
                     <p><strong>Fecha:</strong> <?php echo htmlspecialchars($event['date']); ?></p>
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 </div>
 
                 <!-- Botón de inscripción/cancelación -->
-                <form method="POST" action="view.php?id=<?php echo htmlspecialchars($event_id); ?>">
+                <form method="POST" action="verEvento.php?id=<?php echo htmlspecialchars($event_id); ?>">
                     <?php if ($isEnrolled): ?>
                         <button type="submit" name="action" value="unsubscribe" class="btn-unsubscribe">Cancelar inscripción</button>
                     <?php else: ?>

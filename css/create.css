@@ -1,0 +1,24 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+button.btn-link {
+    font-size: 0.9rem;
+    color: #007bff;
+}
+
+button.btn-link:hover {
+    text-decoration: underline;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+#fileProgress {
+    color: #007bff;
+}

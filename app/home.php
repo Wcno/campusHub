@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/bootstrap.php';
+require_once '../events/includes/bootstrap.php';
 ?>
 
 <!doctype html>
@@ -18,7 +18,7 @@ require_once '../includes/bootstrap.php';
 
   <main class="content-wrapper">
     <header>
-      <h1>Title</h1>
+      <h1>Crear Evento</h1>
     </header>
     <section>
       Tu contenido

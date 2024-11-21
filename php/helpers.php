@@ -12,3 +12,14 @@ function loadComponent(string $name, array $data = [])
     die();
   }
 }
+
+function truncateText($text, $limit, $ellipsis = "...")
+{
+  $words = explode(" ", $text);
+  if (count($words) > $limit) {
+    $truncated = array_slice($words, 0, $limit);
+    return implode(" ", $truncated) . $ellipsis;
+  }
+
+  return $text;
+}

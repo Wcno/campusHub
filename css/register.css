@@ -77,9 +77,21 @@ body, html {
     margin-bottom: 20px;
 }
 
+.register-form label.form-label {
+    display: block;
+    margin-bottom: 5px; /* Espaciado entre la etiqueta y el campo */
+    font-size: 16px;
+    color: #666;
+    text-align: left;
+    width: 100%;
+    font-weight: normal; /* Quitar negrita */
+}
+
 .register-form input[type="text"],
 .register-form input[type="email"],
-.register-form input[type="password"] {
+.register-form input[type="password"],
+.register-form input[type="tel"],
+.register-form input[type="date"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -87,6 +99,9 @@ body, html {
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    color: #666;
+    background-color: #fff;
+    appearance: none; /* Eliminar el estilo predeterminado del navegador */
 }
 
 .register-form input[type="submit"] {

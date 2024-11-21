@@ -134,8 +134,8 @@ a{
 }
 
 hr{
-    border-top:1px solid var(--border) !important;
-    margin:5px 0;
+    border: 1px solid;
+    border-color:rgb(255, 227, 227);
 }
 
 /*botón para la opción de quitar inscripción*/

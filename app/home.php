@@ -197,7 +197,9 @@ try {
             echo '</div>';
           }
         } else {
-          echo '<p>No se encontraron eventos.</p>';
+          echo '<div class="not-found">';
+          echo '<h3><span>¡Aviso!</span> No se encontraron eventos disponibles</h3>';
+          echo '</div>';
         }
         ?>
       </div>

@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
 
                     <p><strong>Capacidad:</strong> <?php echo htmlspecialchars($event['capacity']); ?></p>
-                    <p><strong>location:</strong> <?php echo htmlspecialchars($event['location']); ?></p>
+                    <p><strong>Lugar:</strong> <?php echo htmlspecialchars($event['location']); ?></p>
                     <p><strong>Tema:</strong> <?php echo htmlspecialchars($event['topic']); ?></p>
                     <p><strong>Categoría:</strong> <?php echo htmlspecialchars($event['category'] ?? 'General'); ?></p>
                 </div>

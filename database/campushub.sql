@@ -35,6 +35,7 @@ CREATE TABLE events (
     FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE
 );
 
+
 CREATE TABLE inscriptions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -108,3 +109,25 @@ INSERT INTO inscriptions (user_id, event_id, inscription_date) VALUES
 (8, 9, '2024-11-18 19:10:00'),
 (9, 10, '2024-11-19 09:00:00'),
 (10, 10, '2024-11-20 10:30:00');
+
+--- add table category
+CREATE TABLE category(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+ALTER TABLE events ADD COLUMN category_id INT;
+ALTER TABLE events ADD FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE;
+
+INSERT INTO category (name) VALUES
+('Conferencias'),
+('Talleres'),
+('Conciertos'),
+('Exposiciones'),
+('Charlas'),
+('Ferias'),
+('Festivales'),
+('Competencias');
+
+ALTER TABLE events ADD COLUMN post BOOLEAN DEFAULT FALSE;
+ALTER TABLE events ADD COLUMN post_date TIMESTAMP NULL;

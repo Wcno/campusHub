@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión - CampusHub</title>
+  <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/login.css">
 </head>
 
@@ -52,7 +53,7 @@
           $_SESSION['email'] = $user['email'];
 
           // Redirigir a la página principal de usuario
-          header("Location: ../php/user_index.php");
+          header("Location: ../app/home.php");
           exit();
         } else {
           $errorMessage = "Correo o contraseña incorrectos.";

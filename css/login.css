@@ -115,7 +115,19 @@
     font-size: 14px;
     margin-bottom: 10px;
   }
-  
+
+  .success-message {
+    color: var(--dark-primary); 
+    background-color: var(--extra-light-primary); 
+    border: 1px solid var(--light-primary); 
+    border-radius: 5px; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    font-size: 16px; 
+    text-align: center; 
+    font-weight: bold; 
+}
+
   .register-link {
     font-size: 18px;
     color: var(--text-muted);

@@ -5,12 +5,13 @@
 }
 
 body, html {
-    font-family: Arial, sans-serif;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #bdd0f7;
+    background-color: var(--background);
 }
 
 .container {
@@ -25,8 +26,8 @@ body, html {
 
 .event-info {
     flex: 1;
-    background-color: #2a3a5e;
-    color: #ffffff;
+    background-color: var(--primary);
+    color: var(--background);
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -37,11 +38,15 @@ body, html {
 .event-info h1 {
     font-size: 26px;
     margin-bottom: 10px;
+    color: var(--background);
+    font-weight: bold !important;
 }
 
 .event-info p {
     font-size: 16px;
     margin-bottom: 20px;
+    color: var(--extra-light-primary);
+    font-weight: bold !important; 
 }
 
 .host-info {
@@ -59,41 +64,59 @@ body, html {
 .register-form {
     flex: 1;
     padding: 40px;
-    background-color: #ffffff;
+    background-color: #fff; 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    border-left: 1px solid var(--border); 
 }
 
 .register-form h2 {
     font-size: 28px;
     margin-bottom: 10px;
+    color: var(--text-accent);
 }
 
 .register-form p {
     font-size: 16px;
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 20px;
+}
+
+.register-form label.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: var(--text-primary);
+    text-align: left;
+    width: 100%;
+    font-weight: normal !important; 
 }
 
 .register-form input[type="text"],
 .register-form input[type="email"],
-.register-form input[type="password"] {
+.register-form input[type="password"],
+.register-form input[type="tel"],
+.register-form input[type="date"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    color: var(--text-primary);
+    background-color: #fff;
+    appearance: none;
+    font-weight: normal !important; 
 }
 
 .register-form input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--dark-primary);
+    color: var(--background);
     border: none;
     border-radius: 5px;
     font-size: 18px;
@@ -102,29 +125,32 @@ body, html {
 }
 
 .register-form input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: var(--primary);
 }
 
 .error-message {
-    color: #d9534f;
+    color: #d9534f !important;
     font-size: 14px;
+    margin-top: -10px;
     margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
 }
 
 .success-message {
-    color: #5cb85c;
+    color: var(--dark-primary);
     font-size: 14px;
     margin-bottom: 10px;
 }
 
 .login-link {
     font-size: 18px;
-    color: #666;
+    color: var(--text-muted);
     margin-top: 10px;
 }
 
 .login-link a {
-    color: #007bff;
+    color: var(--primary);
     text-decoration: none;
 }
 

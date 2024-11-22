@@ -1,116 +1,133 @@
-/* css/login.css */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body, html {
-    font-family: Arial, sans-serif;
+  }
+  
+  body, html {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f3f4f6;
-}
-
-.container {
+    background-color: var(--background);
+  }
+  
+  .container {
     display: flex;
     width: 80%;
     max-width: 1000px;
-    height: 70vh;
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos de la Sección de Formulario */
-.login-form {
+  }
+  
+  /* Sección de Información */
+  .event-info {
     flex: 1;
+    background-color: var(--primary);
+    color: var(--background);
     padding: 40px;
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.logo {
-    width: 150px;
-    margin-bottom: 20px;
-}
-
-.login-form h2 {
-    font-size: 28px;
-    color: #3d3d3d;
-    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .event-info h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
     font-weight: bold;
+  }
+  
+  .event-info p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--extra-light-primary);
+    font-weight: bold;
+  }
+  
+  .host-info {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .host-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  /* Sección del Formulario */
+  .login-form {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    margin: 0 auto; 
+    max-width: 80%; 
 }
 
-.login-form input[type="email"],
-.login-form input[type="password"] {
+  .login-form h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--text-accent);
+  }
+  
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 5px;
     font-size: 16px;
-    color: #3d3d3d;
-}
-
-.login-form input[type="submit"] {
+    color: var(--text-primary);
+    background-color: #fff;
+    font-weight: normal;
+  }
+  
+  .login-form input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #d9534f; /* Botón de color rojo similar al ejemplo */
-    color: white;
+    background-color: var(--dark-primary);
+    color: var(--background);
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.login-form input[type="submit"]:hover {
-    background-color: #c9302c;
-}
-
-/* Mensaje de error */
-.error-message {
-    color: #d9534f;
+  }
+  
+  .login-form input[type="submit"]:hover {
+    background-color: var(--primary);
+  }
+  
+  .error-message {
+    color: #d9534f !important;
     font-size: 14px;
     margin-bottom: 10px;
-}
-
-/* Enlace al formulario de registro */
-.register-link {
-    font-size: 14px;
-    color: #666;
-    margin-top: 20px;
-}
-
-.register-link a {
-    color: #d9534f;
+  }
+  
+  .register-link {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+  
+  .register-link a {
+    color: var(--primary);
     text-decoration: none;
-}
-
-.register-link a:hover {
+  }
+  
+  .register-link a:hover {
     text-decoration: underline;
-}
-
-/* Sección de Imagen */
-.image-section {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.image-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+  }
+  

@@ -33,6 +33,13 @@
   width: 100%;
 }
 
+.tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .tag {
   display: inline-flex;
   align-items: center;

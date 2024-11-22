@@ -36,7 +36,8 @@
 
 .nav-links a:hover,
 .nav-links a:active {
-  background-color: var(--light-primary);
+  /* background-color: var(--light-primary); */
+  background-color: rgba(209, 213, 219, 0.2);
 }
 
 /*logo que estará dentro del sidebar*/

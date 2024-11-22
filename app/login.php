@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión - CampusHub</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/login.css">
-</head>
-
-<body>
-
-  <div class="container">
-    <!-- Sección de Información -->
-    <div class="event-info">
-      <h1>Bienvenido a CampusHub</h1>
-      <p>Inicia sesión para acceder a nuestra plataforma.</p>
-
-      <div class="host-info">
-        <img src="../uploads/logo-test.png" alt="CampusHub Logo" class="logo">
-        <p>Gestionado por:</p>
-        <h3>CampusHub</h3>
-        <p>Optimización en gestión de eventos</p>
-      </div>
-    </div>
-
-    <!-- Sección del Formulario -->
-    <div class="login-form">
-      <h2>Iniciar sesión</h2>
-
-      <?php
+<?php
       require_once '../includes/dbconnect.php';
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -61,6 +30,36 @@
       }
       ?>
 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - CampusHub</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Sección de Información -->
+    <div class="event-info">
+      <h1>Bienvenido a CampusHub</h1>
+      <p>Inicia sesión para acceder a nuestra plataforma.</p>
+
+      <div class="host-info">
+        <img src="../uploads/logo-test.png" alt="CampusHub Logo" class="logo">
+        <p>Gestionado por:</p>
+        <h3>CampusHub</h3>
+        <p>Optimización en gestión de eventos</p>
+      </div>
+    </div>
+
+    <!-- Sección del Formulario -->
+    <div class="login-form">
+      <h2>Iniciar sesión</h2>
       <!-- Mostrar mensaje de error -->
       <?php if (isset($errorMessage) && $errorMessage): ?>
         <p class="error-message"><?= htmlspecialchars($errorMessage) ?></p>

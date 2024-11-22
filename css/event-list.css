@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 40px;
+    color: var(--text-accent);
+    letter-spacing: 0.5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+    background: #fff;
+}
+
+table th,
+table td {
+    padding: 20px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+table th {
+    background-color: var(--light-primary);
+    font-weight: bold;
+    color: var(--text-accent);
+}
+
+table tr:hover {
+    background-color: rgba(209, 213, 219, 0.6);
+}
+
+.container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

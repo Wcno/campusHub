@@ -110,7 +110,7 @@ INSERT INTO inscriptions (user_id, event_id, inscription_date) VALUES
 (9, 10, '2024-11-19 09:00:00'),
 (10, 10, '2024-11-20 10:30:00');
 
---- add table category
+-- add table category
 CREATE TABLE category(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE

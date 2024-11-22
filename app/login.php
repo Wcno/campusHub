@@ -1,3 +1,33 @@
+<?php
+require_once '../includes/dbconnect.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $pdo = db_connect();
+  $errorMessage = '';
+
+  // Obtener datos del formulario
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  // Buscar al usuario por correo electrónico
+  $stmt = $pdo->prepare("SELECT id, name, password, email, role FROM users WHERE email = :email");
+  $stmt->execute(['email' => $email]);
+  $user = $stmt->fetch();
+
+  // Verificar la contraseña
+  if ($user && password_verify($password, $user['password'])) {
+    session_start(); // Inicia sesión
+    $_SESSION['user'] = $user;
+
+    // Redirigir a la página principal de usuario
+    header("Location: ../app/home.php");
+    exit();
+  } else {
+    $errorMessage = "Correo o contraseña incorrectos.";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,38 +58,6 @@
     <!-- Sección del Formulario -->
     <div class="login-form">
       <h2>Iniciar sesión</h2>
-
-      <?php
-      require_once '../includes/dbconnect.php';
-
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $pdo = db_connect();
-        $errorMessage = '';
-
-        // Obtener datos del formulario
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Buscar al usuario por correo electrónico
-        $stmt = $pdo->prepare("SELECT id, name, password, email, role FROM users WHERE email = :email");
-        $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch();
-
-        // Verificar la contraseña
-        if ($user && password_verify($password, $user['password'])) {
-          session_start(); // Inicia sesión
-          $_SESSION['user_id'] = $user['id'];
-          $_SESSION['name'] = $user['name'];
-          $_SESSION['email'] = $user['email'];
-
-          // Redirigir a la página principal de usuario
-          header("Location: ../app/home.php");
-          exit();
-        } else {
-          $errorMessage = "Correo o contraseña incorrectos.";
-        }
-      }
-      ?>
 
       <!-- Mostrar mensaje de error -->
       <?php if (isset($errorMessage) && $errorMessage): ?>

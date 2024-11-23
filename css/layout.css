@@ -144,3 +144,16 @@
 .logout-btn:active {
   color: var(--text-accent);
 }
+
+.profile-picture {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1000px;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

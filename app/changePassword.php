@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" type="text/css" href="../css/changePass.css">
   <link href="../css/common.css" rel="stylesheet" />
   <link href="../css/layout.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/perfil.css">
 </head>
 
 <body>
@@ -78,13 +79,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     <?php else: ?>
       <form action="changePassword.php" method="post">
+        <div class="form-group">
         <h2>Cambiar Contraseña</h2>
-
-        <label>Contraseña Actual</label>
-        <input type="password" name="op" placeholder="Contraseña Actual" required>
-        <br>
-
-        <label>Nueva Contraseña</label>
+        <div class="form-group">
+        <label class="form-label">Contraseña Actual</label>
+        <input class="form-input" type="password" name="op" placeholder="Contraseña Actual" required>
+       
+        </div>
+        <div class="form-group">
+        <label class="form-label">Nueva Contraseña</label>
+        <input class="form-input" type="password" name="op" placeholder="Contraseña Actual" required>
+       
+        </div>
+        <div class="form-group">
+        <label class="form-label">Confirmar Nueva Contraseña</label>
+        <input class="form-input" type="password" name="op" placeholder="Contraseña Actual" required>
+       
+        </div>
+        <label class="form-group">Nueva Contraseña</label>
         <input type="password" name="np" placeholder="Nueva Contraseña" required>
         <br>
 
@@ -94,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">CAMBIAR</button>
         <a href="profile.php" class="ca">CANCELAR</a>
+        </div>
       </form>
     <?php endif; ?>
   </main>

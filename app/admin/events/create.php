@@ -80,8 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     <?php endif; ?>
 
-
-
     <section>
       <form action="create.php" method="POST" enctype="multipart/form-data">
         <div class="form card card-body">

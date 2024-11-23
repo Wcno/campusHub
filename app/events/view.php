@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
       <h1>Ver Evento</h1>
 
       <div class="actions">
-        <a href="./list" class="btn btn-secondary">
+        <a href="./home" class="btn btn-secondary">
           Volver
         </a>
 

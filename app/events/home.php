@@ -96,7 +96,7 @@ $tags = $pdo
       <form id="filters-form" method="GET" action="">
         <div class="filters card card-body">
           <div class="search form-group">
-            <input class="input" type="text" name="search" placeholder="Busca tu evento..." value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>" />
+            <input class="input" type="text" name="search" placeholder="Buscar evento..." value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>" />
           </div>
 
           <div class="form-group">

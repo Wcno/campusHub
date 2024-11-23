@@ -129,7 +129,7 @@ try {
               <p class="about-data">Eventos Publicados</p>
             </div>
           </div>
-          <a href="events/list.php" class="more-info more-info-plan-ev">
+          <a href="events/list" class="more-info more-info-plan-ev">
             <p>Ver más</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
               <path d="m9 18 6-6-6-6" />
@@ -151,7 +151,7 @@ try {
               <p class="about-data">Participantes Totales</p>
             </div>
           </div>
-          <a href="events/list.php" class="more-info more-info-tot-part">
+          <a href="events/list" class="more-info more-info-tot-part">
             <p>Ver más</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
               <path d="m9 18 6-6-6-6" />
@@ -170,7 +170,7 @@ try {
               <p class="about-data">Lugares Anfitriones</p>
             </div>
           </div>
-          <a href="events/list.php" class="more-info more-info-tot-loc">
+          <a href="events/list" class="more-info more-info-tot-loc">
             <p>Ver más</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
               <path d="m9 18 6-6-6-6" />

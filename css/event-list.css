@@ -1,6 +1,12 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
 header h1 {
   text-align: left;
-  margin-bottom: 1.5rem;
   color: var(--text-accent);
   letter-spacing: 0.5px;
 }

@@ -23,3 +23,17 @@ function truncateText($text, $limit, $ellipsis = "...")
 
   return $text;
 }
+
+function baseUrl(string $route = "/")
+{
+  $route = ltrim($route, "/");
+
+  return rtrim(BASE_ROUTE, "/") . "/" . $route;
+}
+
+function currentRouteIncludes(string $searchString): bool
+{
+  $currentRoute = $_SERVER['REQUEST_URI'] ?? '/';
+
+  return strpos($currentRoute, $searchString) !== false;
+}

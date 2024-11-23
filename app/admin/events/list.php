@@ -21,6 +21,12 @@ $pdo = db_connect();
   <main class="content-wrapper container">
     <header>
       <h1>Lista de Eventos</h1>
+
+      <div class="actions">
+        <a href="./create">
+          <button class="btn btn-primary" type="button"> Crear </button>
+        </a>
+      </div>
     </header>
     <section class="content">
       <table>

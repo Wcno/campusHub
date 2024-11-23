@@ -1,13 +1,15 @@
 <?php
-session_start(); // Iniciar la sesión
+session_start();
 
-// Destruir todas las variables de sesión
+$user = $_SESSION['user'] ?? [];
+
+// Destruir la sesion
 session_unset();
-
-// Destruir la sesión
 session_destroy();
 
-// Redirigir al formulario de login
-header("Location: ../app/login.php");
+if ($user && $user['role'] == 'admin') {
+  header("Location: ../app/admin/login");
+} else {
+  header("Location: ../app/login");
+}
 exit;
-?>

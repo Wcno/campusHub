@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/dbconnect.php';
+require_once '../php/helpers.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $pdo = db_connect();
@@ -20,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['user'] = $user;
 
     // Redirigir a la página principal de usuario
-    header("Location: ../app/home.php");
+    header("Location: " . baseUrl("/app/home"));
     exit();
   } else {
     $errorMessage = "Correo o contraseña incorrectos.";
@@ -48,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <p>Inicia sesión para acceder a nuestra plataforma.</p>
 
       <div class="host-info">
-        <img src="../uploads/logo-test.png" alt="CampusHub Logo" class="logo">
+        <img src="<?php echo baseUrl('../uploads/logo-test.png') ?>" alt="CampusHub Logo" class="logo">
         <p>Gestionado por:</p>
         <h3>CampusHub</h3>
         <p>Optimización en gestión de eventos</p>
@@ -64,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p class="error-message"><?= htmlspecialchars($errorMessage) ?></p>
       <?php endif; ?>
 
-      <form action="login.php" method="post">
+      <form action="login" method="post">
         <div class="form-group">
           <label class="label">Correo</label>
           <input class="input" type="email" name="email" placeholder="Dirección de correo electrónico" required>
@@ -77,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </form>
 
       <!-- Enlace al registro -->
-      <p class="register-link">¿No tienes una cuenta? <a href="register.php">Regístrate</a></p>
+      <p class="register-link">¿No tienes una cuenta? <a href="register">Regístrate</a></p>
     </div>
   </div>
 

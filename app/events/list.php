@@ -95,6 +95,12 @@ $tags = $pdo
   <main class="content-wrapper">
     <header>
       <h1>Explora nuestros eventos</h1>
+
+      <div class="actions">
+        <a href="./create" class="btn btn-primary">
+          Crear
+        </a>
+      </div>
     </header>
     <section class="content">
       <form id="filters-form" method="GET" action="">

@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/dbconnect.php';
+require_once '../php/helpers.php';
 
 $errors = []; // Arreglo para almacenar errores
 
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user'] = $user;
 
         // Redirigir al home
-        header("Location: ../app/home.php");
+        header("Location: " . baseUrl("/app/home"));
         exit();
       } else {
         $errors['general'] = "Error al iniciar sesión automáticamente.";
@@ -90,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <h1>Bienvenido a CampusHub</h1>
       <p>Regístrate para acceder a nuestra plataforma.</p>
       <div class="host-info">
-        <img src="../uploads/logo-test.png" alt="Logo de CampusHub">
+        <img src="<?php echo baseUrl('../uploads/logo-test.png') ?>" alt="CampusHub Logo" class="logo">
         <p>Gestionado por:</p>
         <h3>CampusHub</h3>
         <p>Optimización en gestión de eventos</p>
@@ -106,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p class="error-message"><?= htmlspecialchars($errors['general']) ?></p>
       <?php endif; ?>
 
-      <form action="register.php" method="post">
+      <form action="register" method="post">
         <div class="form-group">
           <label class="label">Nombre</label>
           <input class="input" type="text" name="name" placeholder="Nombre Completo" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>" required>
@@ -160,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input class="btn btn-primary submit" type="submit" value="Registrarse">
       </form>
       <br>
-      <p class="login-link">¿Ya tienes una cuenta? <a href="login.php">Inicia sesión</a></p>
+      <p class="login-link">¿Ya tienes una cuenta? <a href="login">Inicia sesión</a></p>
     </div>
   </div>
 

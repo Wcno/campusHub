@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="form-actions">
-          <input class="btn btn-primary submit" type="submit" value="Registrarse">
+          <input class="btn btn-primary submit" type="submit" value="Guardar">
         </div>
       </form>
     </div>

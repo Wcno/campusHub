@@ -1,4 +1,9 @@
 /*abarca todo el contenido de la página en específico*/
+.search {
+  flex-grow: 1;
+  width: 100%;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -205,11 +210,6 @@ hr {
   gap: 1rem;
   margin-bottom: 2rem;
   padding: 0.5rem;
-}
-
-.search {
-  flex: 1 1 0;
-  width: 100%;
 }
 
 .event-list {

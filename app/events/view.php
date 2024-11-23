@@ -117,7 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
           $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
           ?>
           <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
-          <!-- <img src="../../uploads/test-img-catalog.jpg" alt="event image" /> -->
         </div>
         <div class="card-body event-info">
           <h2><?php echo htmlspecialchars($event['title']) ?></h2>

@@ -80,9 +80,9 @@
 .form-input {
     padding: 10px;
     border: 1px solid var(--border);
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 1rem;
-    background-color: #f9f9f9;
+    background-color: white;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 

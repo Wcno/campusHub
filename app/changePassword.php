@@ -55,58 +55,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cambiar Contraseña</title>
-  <link rel="stylesheet" type="text/css" href="../css/changePass.css">
-  <link href="../css/common.css" rel="stylesheet" />
-  <link href="../css/layout.css" rel="stylesheet" />
+  <link href="../css/common.css" rel="stylesheet">
+  <link href="../css/layout.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/perfil.css">
 </head>
 
 <body>
   <?php loadComponent('top-wrapper'); ?>
+
   <main class="content-wrapper">
     <?php if (isset($message)): ?>
+      <!-- Mensaje de éxito o error -->
       <div class="message <?php echo isset($success) && $success ? 'success' : 'error'; ?>">
         <p><?php echo htmlspecialchars($message); ?></p>
-        <?php if (isset($success) && $success): ?>
-          <a href="profile.php">Aceptar</a>
-        <?php else: ?>
-          <a href="changePassword.php">Intentar de nuevo</a>
-        <?php endif; ?>
+        <a href="<?php echo isset($success) && $success ? 'profile.php' : 'changePassword.php'; ?>">
+          <?php echo isset($success) && $success ? 'Aceptar' : 'Intentar de nuevo'; ?>
+        </a>
       </div>
     <?php else: ?>
-      <form action="changePassword.php" method="post">
-        <div class="form-group">
-        <h2>Cambiar Contraseña</h2>
-        <div class="form-group">
-        <label class="form-label">Contraseña Actual</label>
-        <input class="form-input" type="password" name="op" placeholder="Contraseña Actual" required>
-       
-        </div>
-        <div class="form-group">
-        <label class="form-label">Nueva Contraseña</label>
-        <input class="form-input" type="password" name="np" placeholder="Contraseña Actual" required>
-       
-        </div>
-        <div class="form-group">
-        <label class="form-label">Confirmar Nueva Contraseña</label>
-        <input class="form-input" type="password" name="c_np" placeholder="Contraseña Actual" required>
-       
+      <!-- Formulario de cambio de contraseña -->
+      <div class="main-container">
+        <div class="panel">
+          <div class="main-content">
+            <header class="profile-header">
+              <h1>Cambiar Contraseña</h1>
+              <p>Introduce tu contraseña actual y define una nueva</p>
+            </header>
 
-        
+            <div class="form-container">
+              <form class="form" action="changePassword.php" method="POST">
+                <div class="form-group">
+                  <label class="form-label" for="op">Contraseña Actual</label>
+                  <input class="form-input" type="password" name="op" id="op" placeholder="Contraseña Actual" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="np">Nueva Contraseña</label>
+                  <input class="form-input" type="password" name="np" id="np" placeholder="Nueva Contraseña" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="c_np">Confirmar Nueva Contraseña</label>
+                  <input class="form-input" type="password" name="c_np" id="c_np" placeholder="Repetir Contraseña" required>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="button-group">
+                  <button class="cancel" type="submit" name="cancel">Cancelar</button>
+                  <button class="save" type="submit" name="save">Guardar Cambios</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="button-group">
-              <button class="cancel" type="submit" name="cancel" class="exit">Cancelar</button>
-                <button class="save" type="submit" name="save" class="save">Guardar Cambios</button>
-               
-              </div>
-      </form>
+      </div>
     <?php endif; ?>
   </main>
-
 </body>
 
 </html>

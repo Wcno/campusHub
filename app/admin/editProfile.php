@@ -113,29 +113,51 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="main-container">
       <div class="panel">
         <div class="main-content">
-          <div class="profile-info">
-            <img class="profile-photo" src="<?php echo htmlspecialchars($_SESSION['user']['img_profile'] ?? 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png'); ?>" alt="imagen de usuario">
-          </div>
+         <!-- Título Principal -->
+         <header class="profile-header">
+            <h1>Editar Perfil</h1>
+            <p>Gestiona tu información personal y actualiza tu configuración</p>
+          </header>
+
+          <!-- Contenedor principal de la información -->
+          <div class="profile-layout">
+            <!-- Sección de Foto de Perfil -->
+            <div class="profile-picture-section">
+              <h2>Foto de Perfil</h2>
+              <img class="profile-photo" src="<?php echo htmlspecialchars($_SESSION['user']['img_profile'] ?? 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png'); ?>" alt="Imagen de usuario">
+            </div>
+
+            <!-- Formulario de Datos -->
+            <div class="form-container">
+              <h2>Detalles del Usuario</h2>
           <div class="form-container">
             <form class="form" method="POST" enctype="multipart/form-data">
-              <label class="form-label" for="fname">Nombre Completo</label>
-              <input class="form-input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>"><br>
+            <div class="form-group">
+                  <label class="form-label" for="fname">Nombre Completo</label>
+                  <input class="form-input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>" readonly>
+                </div>
 
-              <label class="form-label" for="phone">Número de Teléfono</label>
-              <input class="form-input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>"><br>
+                <div class="form-group">
+                  <label class="form-label" for="email">Correo Electrónico</label>
+                  <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" readonly>
+                </div>
 
-              <label class="form-label" for="email">Correo Electrónico</label><br>
-              <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>"><br>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Número de Teléfono</label>
+                  <input class="form-input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>" readonly>
+                </div>
 
-              <label class="form-label" for="fecha-nacimiento">Fecha de Nacimiento</label><br>
-              <input class="form-input" type="date" name="fecha-nacimiento" id="fecha-nacimiento" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>"><br>
-
+                <div class="form-group">
+                  <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
+                  <input class="form-input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>" readonly>
+                </div>
               <label for="profile_image" class="form-label">Cambiar Foto</label>
               <input type="file" class="form-input" name="profile_image" id="profile_image" accept="image/*">
 
-              <div class="but">
-                <button type="submit" name="save" class="save">Save Changes</button>
-                <button type="submit" name="cancel" class="exit">Cancel</button>
+              <div class="button-group">
+              <button class="cancel" type="submit" name="cancel" class="exit">Cancelar</button>
+                <button class="save" type="submit" name="save" class="save">Guardar Cambios</button>
+               
               </div>
             </form>
           </div>

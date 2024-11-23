@@ -11,40 +11,42 @@ $category = $_GET['category'] ?? ''; // Filtro de categorías principales
 $tag = $_GET['tag'] ?? []; // Filtro de tema
 
 try {
-  // Consulta base para los eventos
-  $query = "SELECT events.*, locations.name AS location, tags.name AS tag, category.name AS category FROM events
-    LEFT JOIN locations ON events.location_id = locations.id
-    LEFT JOIN tags ON events.tag_id = tags.id
-    LEFT JOIN category ON events.category_id = category.id
-    WHERE events.post = 1"; // Solo eventos publicados
+  // Consulta base para los eventos en los que el usuario está inscrito
+  $query = "SELECT events.*, locations.name AS location, tags.name AS tag, category.name AS category 
+            FROM events
+            LEFT JOIN locations ON events.location_id = locations.id
+            LEFT JOIN tags ON events.tag_id = tags.id
+            LEFT JOIN category ON events.category_id = category.id
+            INNER JOIN inscriptions ON events.id = inscriptions.event_id
+            WHERE inscriptions.user_id = :user_id";
 
   // Parámetros para la consulta
-  $params = [];
+  $params = [':user_id' => $_SESSION['user']['id']];
 
   // Filtrar por búsqueda
   if (!empty($search)) {
-    $query .= " AND (LOWER(events.title) LIKE LOWER(:search_title) OR LOWER(events.description) LIKE LOWER(:search_description))";
-    $params[':search_title'] = '%' . $search . '%';
-    $params[':search_description'] = '%' . $search . '%';
+      $query .= " AND (LOWER(events.title) LIKE LOWER(:search_title) 
+                      OR LOWER(events.description) LIKE LOWER(:search_description))";
+      $params[':search_title'] = '%' . $search . '%';
+      $params[':search_description'] = '%' . $search . '%';
   }
 
-  // Filtrar por lugar (excepto si selecciona "general")
+  // Filtrar por lugar
   if (!empty($location) && $location !== 'general') {
-    $query .= " AND locations.id = :location";
-    $params[':location'] = $location;
+      $query .= " AND locations.id = :location";
+      $params[':location'] = $location;
   }
 
   // Filtrar por tema
   if (!empty($tag)) {
-    $query .= " AND tags.id = :tag";
-    $params[':tag'] = $tag;
+      $query .= " AND tags.id = :tag";
+      $params[':tag'] = $tag;
   }
-
 
   // Filtrar por categorías
   if (!empty($category) && $category !== 'general') {
-    $query .= " AND category.id = :category";
-    $params[':category'] = $category;
+      $query .= " AND category.id = :category";
+      $params[':category'] = $category;
   }
 
   // Añadir ordenamiento

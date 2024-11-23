@@ -233,6 +233,10 @@ hr {
   width: 100%;
 }
 
+.tags {
+  margin-top: 0.5rem;
+}
+
 .tag {
   display: inline-flex;
   align-items: center;

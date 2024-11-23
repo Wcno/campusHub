@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <main class="content-wrapper">
     <header>
-      <h2>Editar Evento</h2>
+      <h1>Editar Evento</h1>
     </header>
     <?php if (isset($message)) : ?>
       <div class="<?= strpos($message, 'Error') !== false ? 'error-message' : 'success-message' ?>">

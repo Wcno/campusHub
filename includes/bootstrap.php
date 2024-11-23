@@ -9,16 +9,16 @@ session_start();
 $user = $_SESSION['user'] ?? null;
 if ($user && $user['role'] != 'admin' && currentRouteIncludes('/admin')) {
   // Logica por si un usuario sin privilegio se cree vivo
-  header('Location: /app/admin/login');
+  header('Location: ' . baseUrl('/app/admin/login'));
   exit();
 }
 
 if (!$user && currentRouteIncludes('/admin')) {
-  header('Location: /app/admin/login');
+  header('Location: ' . baseUrl('/app/admin/login'));
   exit();
 }
 
 if (!$user && !currentRouteIncludes('/login') && !currentRouteIncludes('/register')) {
-  header('Location: /app/login');
+  header('Location: ' . baseUrl('/app/login'));
   exit();
 }

@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <main class="content-wrapper">
     <header>
-      <h2>Crear Evento</h2>
+      <h1>Crear Evento</h1>
     </header>
     <?php if (!empty($message)) : ?>
       <div class="<?= $error ? 'error-message' : 'success-message' ?>">

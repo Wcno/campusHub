@@ -27,7 +27,10 @@ $userRole = $_SESSION['user']['role'] ?? null;
       <div class="perfil-logout">
         <?php
         $imagePath = '/uploads/' . $user['img_profile'];
-        $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $imagePath;
+        $urlPath = parse_url(baseUrl($imagePath))['path'];
+        $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+
         if ($user['img_profile'] && file_exists($fullImagePath)) {
         ?>
           <div class="profile-picture">

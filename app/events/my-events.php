@@ -35,14 +35,11 @@ try {
   }
 
   // Filtrar por tema
-  if (!empty($tag) && is_array($tag)) {
-    $tagParams = [];
-    foreach ($tag as $index => $subcat) {
-      $tagParams[] = ":tag" . $index;
-      $params[":tag" . $index] = $subcat;
-    }
-    $query .= " AND tags.id IN (" . implode(',', $tagParams) . ")";
+  if (!empty($tag)) {
+    $query .= " AND tags.id = :tag";
+    $params[':tag'] = $tag;
   }
+
 
   // Filtrar por categorías
   if (!empty($category) && $category !== 'general') {
@@ -82,9 +79,9 @@ $tags = $pdo
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mis Eventos</title>
-  <link href="/css/common.css" rel="stylesheet" />
-  <link href="/css/layout.css" rel="stylesheet" />
-  <link href="/css/my-events.css" rel="stylesheet" />
+  <link href="../../css/common.css" rel="stylesheet" />
+  <link href="../../css/layout.css" rel="stylesheet" />
+  <link href="../../css/my-events.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -159,14 +156,21 @@ $tags = $pdo
       </form>
       <div class="event-list">
         <?php foreach ($events as $event) { ?>
-          <a href="/app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
+          <a href="../../app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
             <div class="card card-body event-list-item">
               <div class="img-container">
-                <img src="/uploads/logo-test.png" />
+                <?php
+                $imagePath = '/uploads/' . $event['image_url'];
+                $urlPath = parse_url(baseUrl($imagePath))['path'];
+                $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+
+                $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                ?>
+                <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
               </div>
               <div class="event-info">
                 <h4 class="event-title"><?php echo $event['title'] ?></h4>
-                <p class="event-description"><?php echo truncateText($event['description'], 50) ?></p>
                 <div class="tags">
                   <?php if (!empty($event['tag'])) { ?>
                     <span class="tag"><?php echo htmlspecialchars($event['tag']) ?></span>

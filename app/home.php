@@ -19,7 +19,7 @@ try {
     LEFT JOIN category ON events.category_id = category.id
     WHERE events.post = 1
     ORDER BY events.date ASC, events.time ASC
-    LIMIT 5";
+    LIMIT 3";
 
   $nextEvents = $pdo->query($query)->fetchAll();
 
@@ -38,7 +38,7 @@ try {
     WHERE events.post = 1
     GROUP BY events.id
     ORDER BY inscription_count DESC, events.date ASC, events.time ASC
-    LIMIT 5";
+    LIMIT 3";
 
   $popularEvents = $pdo->query($query)->fetchAll();
 } catch (PDOException $e) {
@@ -83,10 +83,18 @@ $tags = $pdo
         <h2 class="section-title">Próximos Eventos</h2>
         <div class="event-list">
           <?php foreach ($nextEvents as $event) { ?>
-            <a href="/app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
+            <a href="../app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
               <div class="card card-body event-list-item">
                 <div class="img-container">
-                  <img src="/uploads/logo-test.png" />
+                  <?php
+                  $imagePath = '/uploads/' . $event['image_url'];
+                  $urlPath = parse_url(baseUrl($imagePath))['path'];
+                  $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+
+                  $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                  ?>
+                  <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
                 </div>
                 <div class="event-info">
                   <h4 class="event-title"><?php echo htmlspecialchars($event['title']) ?></h4>
@@ -110,10 +118,18 @@ $tags = $pdo
         <h2 class="section-title">Revisa nuestros eventos más populares</h2>
         <div class="event-list">
           <?php foreach ($nextEvents as $event) { ?>
-            <a href="/app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
+            <a href="../app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
               <div class="card card-body event-list-item">
                 <div class="img-container">
-                  <img src="/uploads/logo-test.png" />
+                  <?php
+                  $imagePath = '/uploads/' . $event['image_url'];
+                  $urlPath = parse_url(baseUrl($imagePath))['path'];
+                  $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+
+                  $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                  ?>
+                  <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
                 </div>
                 <div class="event-info">
                   <h4 class="event-title"><?php echo htmlspecialchars($event['title']) ?></h4>

@@ -74,9 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Detalle del Evento</title>
-  <link href="/css/common.css" rel="stylesheet" />
-  <link href="/css/layout.css" rel="stylesheet" />
-  <link href="/css/view.css" rel="stylesheet">
+  <link href="../../css/common.css" rel="stylesheet" />
+  <link href="../../css/layout.css" rel="stylesheet" />
+  <link href="../../css/view.css" rel="stylesheet">
 
 </head>
 
@@ -112,7 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         <div class="image-view">
           <?php
           $imagePath = '/uploads/' . $event['image_url'];
-          $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $imagePath;
+          $urlPath = parse_url(baseUrl($imagePath))['path'];
+          $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
 
           $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
           ?>

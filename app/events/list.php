@@ -37,13 +37,9 @@ try {
   }
 
   // Filtrar por tema
-  if (!empty($tag) && is_array($tag)) {
-    $tagParams = [];
-    foreach ($tag as $index => $subcat) {
-      $tagParams[] = ":tag" . $index;
-      $params[":tag" . $index] = $subcat;
-    }
-    $query .= " AND tags.id IN (" . implode(',', $tagParams) . ")";
+  if (!empty($tag)) {
+    $query .= " AND tags.id = :tag";
+    $params[':tag'] = $tag;
   }
 
   // Filtrar por categorías
@@ -170,14 +166,21 @@ $tags = $pdo
             $stmt->execute([':user_id' => $_SESSION['user']['id'], ':event_id' => $event['id']]);
             $isEnrolled = $stmt->rowCount() > 0;
         ?>
-            <a href="/app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
+            <a href="../../app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
               <div class="card card-body event-list-item">
                 <div class="img-container">
-                  <img src="/uploads/logo-test.png" />
+                  <?php
+                  $imagePath = '/uploads/' . $event['image_url'];
+                  $urlPath = parse_url(baseUrl($imagePath))['path'];
+                  $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+
+                  $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                  ?>
+                  <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
                 </div>
                 <div class="event-info">
                   <h4 class="event-title"><?php echo htmlspecialchars($event['title']) ?></h4>
-                  <p class="event-description"><?php echo htmlspecialchars(truncateText($event['description'], 50)) ?></p>
                   <div class="tags">
                     <?php if (!empty($event['tag'])) { ?>
                       <span class="tag"><?php echo htmlspecialchars($event['tag']) ?></span>

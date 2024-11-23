@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $password = $_POST['password'];
 
   // Buscar al usuario por correo electrónico
-  $stmt = $pdo->prepare("SELECT id, name, password, email, role FROM users WHERE email = :email");
+  $stmt = $pdo->prepare("SELECT id, name, password, email, role FROM users WHERE email = :email AND role = 'user'");
   $stmt->execute(['email' => $email]);
   $user = $stmt->fetch();
 
@@ -65,9 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php endif; ?>
 
       <form action="login.php" method="post">
-        <input type="email" name="email" placeholder="Dirección de correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <input type="submit" value="Iniciar sesión">
+        <div class="form-group">
+          <label class="label">Correo</label>
+          <input class="input" type="email" name="email" placeholder="Dirección de correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <label class="label">Contraseña</label>
+          <input class="input" type="password" name="password" placeholder="Contraseña" required>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Iniciar sesión">
       </form>
 
       <!-- Enlace al registro -->

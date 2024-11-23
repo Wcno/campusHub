@@ -1,3 +1,33 @@
+<?php
+require_once '../../includes/dbconnect.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $pdo = db_connect();
+  $errorMessage = '';
+
+  // Obtener datos del formulario
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  // Buscar al usuario por correo electrónico y rol de administrador
+  $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email AND role = 'admin'");
+  $stmt->execute(['email' => $email]);
+  $user = $stmt->fetch();
+
+  // Verificar la contraseña y el rol
+  if ($user && password_verify($password, $user['password'])) {
+    session_start(); // Inicia sesión
+    $_SESSION['user'] = $user;
+
+    // Redirigir al panel de administrador
+    header("Location: dashboard.php");
+    exit();
+  } else {
+    $errorMessage = "Credenciales incorrectas";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +36,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión - Administradores</title>
   <link rel="stylesheet" href="../../css/common.css">
-  <link rel="stylesheet" href="../../css/login.css"> 
+  <link rel="stylesheet" href="../../css/login.css">
 </head>
 
 <body>
@@ -27,39 +57,7 @@
 
     <!-- Sección del Formulario -->
     <div class="login-form">
-      <h2>Iniciar sesión como Administrador</h2>
-
-      <?php
-      require_once '../../includes/dbconnect.php';
-
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $pdo = db_connect();
-        $errorMessage = '';
-
-        // Obtener datos del formulario
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Buscar al usuario por correo electrónico y rol de administrador
-        $stmt = $pdo->prepare("SELECT id, name, password, email, role FROM users WHERE email = :email AND role = 'admin'");
-        $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch();
-
-        // Verificar la contraseña y el rol
-        if ($user && password_verify($password, $user['password'])) {
-          session_start(); // Inicia sesión
-          $_SESSION['admin_id'] = $user['id'];
-          $_SESSION['name'] = $user['name'];
-          $_SESSION['email'] = $user['email'];
-
-          // Redirigir al panel de administrador
-          header("Location: dashboard.php");
-          exit();
-        } else {
-          $errorMessage = "Credenciales incorrectas o no tienes permisos de administrador.";
-        }
-      }
-      ?>
+      <h2>Iniciar Sesión</h2>
 
       <!-- Mostrar mensaje de error -->
       <?php if (isset($errorMessage) && $errorMessage): ?>
@@ -67,13 +65,16 @@
       <?php endif; ?>
 
       <form action="login.php" method="post">
-        <input type="email" name="email" placeholder="Dirección de correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <input type="submit" value="Iniciar sesión">
+        <div class="form-group">
+          <label class="label">Correo</label>
+          <input class="input" type="email" name="email" placeholder="Dirección de correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <label class="label">Contraseña</label>
+          <input class="input" type="password" name="password" placeholder="Contraseña" required>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Iniciar sesión">
       </form>
-
-      <!-- Enlace al registro de administradores -->
-      <p class="register-link">¿No tienes una cuenta de administrador? <a href="register.php">Regístrate</a></p>
     </div>
   </div>
 

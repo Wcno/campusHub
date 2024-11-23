@@ -1,202 +1,104 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body, html {
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    height: 100%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    background-color: var(--background);
-}
-
-.container {
-    display: flex;
-    width: 80%;
-    max-width: 1000px;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.event-info {
-    flex: 1;
-    background-color: var(--primary);
-    color: var(--background);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.event-info h1 {
-    font-size: 26px;
-    margin-bottom: 10px;
-    color: var(--background);
-    font-weight: bold !important;
-}
-
-.event-info p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: var(--extra-light-primary);
-    font-weight: bold !important; 
-}
-
-.host-info {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.host-info img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+header p {
+  color: var(--text-muted);
+  margin-top: 0.325rem;
+  font-size: 0.875rem;
 }
 
 .register-form {
-    flex: 1;
-    padding: 40px;
-    background-color: #fff; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-left: 1px solid var(--border); 
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.register-form form {
+  width: 100%;
 }
 
 .register-form h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: var(--text-accent);
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--text-accent);
 }
 
 .register-form p {
-    font-size: 16px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
+  font-size: 16px;
+  color: var(--text-muted);
 }
 
 .register-form label.form-label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: var(--text-primary);
-    text-align: left;
-    width: 100%;
-    font-weight: normal !important; 
-}
-
-.register-form input[type="text"],
-.register-form input[type="email"],
-.register-form input[type="password"],
-.register-form input[type="tel"],
-.register-form input[type="date"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-    color: var(--text-primary);
-    background-color: #fff;
-    appearance: none;
-    font-weight: normal !important; 
-}
-
-.register-form input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--dark-primary);
-    color: var(--background);
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.register-form input[type="submit"]:hover {
-    background-color: var(--primary);
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: var(--text-primary);
+  text-align: left;
+  width: 100%;
+  font-weight: normal !important;
 }
 
 .error-message {
-    color: #d9534f !important;
-    font-size: 14px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    text-align: left;
-    width: 100%;
+  color: var(--danger) !important;
+  font-size: 0.875rem !important;
+  text-align: left;
+  width: 100%;
 }
 
 .success-message {
-    color: var(--dark-primary) !important;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.login-link {
-    font-size: 18px;
-    color: var(--text-muted);
-    margin-top: 10px;
-}
-
-.login-link a {
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
+  color: var(--primary) !important;
+  grid-column: span 2;
+  font-size: 14px;
 }
 
 .password-info {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    color: #333;
-    font-size: 14px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-top: 5px;
+  display: none;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: max-content;
+  margin-top: 5px;
+}
+
+.password-info ul {
+  padding-left: 1rem;
 }
 
 .password-container {
-    position: relative;
+  position: relative;
 }
 
 .password-container:hover .password-info {
-    display: block;
+  display: block;
 }
 
 .register-button-wrapper {
-    display: flex;
-    justify-content: left;
-    margin-top: 20px;
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
 }
 
 .register-button-wrapper button {
-    padding: 12px 20px;
-    background-color: var(--dark-primary);
-    color: var(--background);
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 12px 20px;
+  background-color: var(--dark-primary);
+  color: var(--background);
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .register-button-wrapper button:hover {
-    background-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-actions {
+  padding: 1.5rem 0;
 }

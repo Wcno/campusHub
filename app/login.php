@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['user'] = $user;
 
     // Redirigir a la página principal de usuario
-    header("Location: " . baseUrl("/app/home"));
+    header("Location: " . baseUrl("/app/events/home"));
     exit();
   } else {
     $errorMessage = "Correo o contraseña incorrectos.";

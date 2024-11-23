@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user'] = $user;
 
         // Redirigir al home
-        header("Location: " . baseUrl("/app/home"));
+        header("Location: " . baseUrl("/app/events/home"));
         exit();
       } else {
         $errors['general'] = "Error al iniciar sesión automáticamente.";

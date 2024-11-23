@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="button-group">
-          <button class="btn btn-primary" type="submit">Crear Evento</button>
+          <button class="btn btn-primary" type="submit">Guardar cambios</button>
           <button type="button" class="btn btn-secondary" onclick="window.location.href = 'list'">Cancelar</button>
         </div>
       </form>

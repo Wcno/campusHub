@@ -6,36 +6,34 @@ require_once '../includes/dbconnect.php';
 require_once '../includes/bootstrap.php';
 
 $pdo = db_connect();
-$id = 3; // Este es el ID que quieres consultar
 
-// Consulta SQL
-$stmt = $pdo->prepare("SELECT name FROM users WHERE id = :id");
+// Obtener datos del usuario autenticado
+$id = $_SESSION['user']['id'];
+
+$stmt = $pdo->prepare("SELECT name, phone_number, email, birth_date, img_profile FROM users WHERE id = :id");
 $stmt->execute([':id' => $id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Verifica si los datos de sesión están definidos
-if (!isset($_SESSION['user'])) {
-  $_SESSION['user'] = [
-    'name' => $row['name'] ?? 'Nombre no disponible',
-    'phone_number' => '123456789', // Sustituye por un valor real
-    'email' => 'admin@admin.com', // Sustituye por un valor real
-    'birth_date' => '1984-11-23'  // Sustituye por un valor real
-  ];
+if ($row) {
+    $_SESSION['user'] = array_merge($_SESSION['user'], $row);
+} else {
+    echo "Usuario no encontrado.";
+    exit;
 }
 
 // Manejo del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $action = $_POST['action'] ?? '';
+    $action = $_POST['action'] ?? '';
 
-  if ($action === 'editProfile') {
-    header('Location: editProfile.php');
-    exit;
-  } elseif ($action === 'changePassword') {
-    header('Location: changePassword.php');
-    exit;
-  } else {
-    echo "Acción no reconocida.";
-  }
+    if ($action === 'editProfile') {
+        header('Location: editProfile.php');
+        exit;
+    } elseif ($action === 'changePassword') {
+        header('Location: changePassword.php');
+        exit;
+    } else {
+        echo "Acción no reconocida.";
+    }
 }
 ?>
 

@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <h1>Bienvenido a CampusHub</h1>
       <p>Regístrate para acceder a nuestra plataforma.</p>
       <div class="host-info">
-        <img src="<?php echo baseUrl('../uploads/logo-test.png') ?>" alt="CampusHub Logo" class="logo">
+        <img src="<?php echo baseUrl('/uploads/logo-test.png') ?>" alt="CampusHub Logo" class="logo">
         <p>Gestionado por:</p>
         <h3>CampusHub</h3>
         <p>Optimización en gestión de eventos</p>

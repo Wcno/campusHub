@@ -87,12 +87,12 @@ $tags = $pdo
               <div class="card card-body event-list-item">
                 <div class="img-container">
                   <?php
-                  $imagePath = '/uploads/' . $event['image_url'];
+                  $imagePath = '/uploads/' . ($event['image_url'] ?? '');
                   $urlPath = parse_url(baseUrl($imagePath))['path'];
                   $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
 
 
-                  $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                  $source = (!empty($event['image_url']) && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
                   ?>
                   <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
                 </div>
@@ -122,12 +122,12 @@ $tags = $pdo
               <div class="card card-body event-list-item">
                 <div class="img-container">
                   <?php
-                  $imagePath = '/uploads/' . $event['image_url'];
+                  $imagePath = '/uploads/' . ($event['image_url'] ?? '');
                   $urlPath = parse_url(baseUrl($imagePath))['path'];
                   $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
 
 
-                  $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                  $source = (!empty($event['image_url']) && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
                   ?>
                   <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
                 </div>

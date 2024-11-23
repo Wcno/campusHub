@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $password = $_POST['password'];
 
   // Buscar al usuario por correo electrónico
-  $stmt = $pdo->prepare("SELECT id, name, password, email, role FROM users WHERE email = :email AND role = 'user'");
+  $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email AND role = 'user'");
   $stmt->execute(['email' => $email]);
   $user = $stmt->fetch();
 
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <p>Inicia sesión para acceder a nuestra plataforma.</p>
 
       <div class="host-info">
-        <img src="<?php echo baseUrl('../uploads/logo-test.png') ?>" alt="CampusHub Logo" class="logo">
+        <img src="<?php echo baseUrl('/uploads/logo-test.png') ?>" alt="CampusHub Logo" class="logo">
         <p>Gestionado por:</p>
         <h3>CampusHub</h3>
         <p>Optimización en gestión de eventos</p>

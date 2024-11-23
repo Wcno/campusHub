@@ -26,16 +26,14 @@ $userRole = $_SESSION['user']['role'] ?? null;
     <div class="caja-perfil" id="caja-perfil">
       <div class="perfil-logout">
         <?php
-        $imagePath = '/uploads/' . $user['img_profile'];
+        $imagePath = '/uploads/' . ($user['img_profile'] ?? '');
         $urlPath = parse_url(baseUrl($imagePath))['path'];
         $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
 
-
-        if ($user['img_profile'] && file_exists($fullImagePath)) {
+        if (!empty($user['img_profile']) && file_exists($fullImagePath)) {
         ?>
           <div class="profile-picture">
             <img src="<?php echo baseUrl($imagePath) ?? '' ?>" alt="event image" />
-            <!-- <img src="../../uploads/test-img-catalog.jpg" alt="event image" /> -->
           </div>
         <?php } else { ?>
           <svg height="32" width="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

@@ -144,7 +144,7 @@ $tags = $pdo
               </svg>
             </button>
 
-            <?php if (!empty($_GET['search']) || !empty($_GET['location']) || !empty($_GET['tag'])) { ?>
+            <?php if (!empty($_GET['search']) || !empty($_GET['category']) || !empty($_GET['location']) || !empty($_GET['tag'])) { ?>
               <button class="btn btn-danger btn-icon" type="button" onclick="resetFilters()">
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -160,12 +160,11 @@ $tags = $pdo
             <div class="card card-body event-list-item">
               <div class="img-container">
                 <?php
-                $imagePath = '/uploads/' . $event['image_url'];
+                $imagePath = '/uploads/' . ($event['image_url'] ?? '');
                 $urlPath = parse_url(baseUrl($imagePath))['path'];
                 $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
 
-
-                $source = ($user['img_profile'] && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
+                $source = (!empty($event['image_url']) && file_exists($fullImagePath)) ? $imagePath : '/uploads/test-img-catalog.jpg';
                 ?>
                 <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
               </div>

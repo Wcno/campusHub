@@ -1,0 +1,155 @@
+.main-container {
+    height: 100%;
+}
+
+.panel {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+.main-content {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-info {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 19rem;
+    height: 19rem;
+    object-fit: cover;
+    margin: 0px 30px;
+}
+
+.profile-link {
+    text-decoration: none;
+    font-size: 18px;
+    color: grey;
+    font-weight: bold;
+    margin: 20px 55px;
+}
+
+.profile-link:hover {
+    color: darkslategrey;
+    transition: 0.5s;
+}
+
+.form-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    margin-top: 2rem;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: grey;
+    margin-left: 65px;
+}
+
+.form-input {
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+    width: 80%;
+    margin-bottom: 40px;
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 65px;
+}
+
+button {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+.but {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+button:hover {
+    cursor: pointer;
+    color: seashell;
+    transition: 0.5s;
+}
+
+.save {
+    background-color: darkseagreen;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.profile-info input {
+    width: 0%;
+}
+
+/* Responsivo */
+@media screen and (max-width: 1024px) {
+    .main-container {
+        height: fit-content;
+    }
+
+    .panel {
+        height: fit-content;
+        flex-direction: column;
+    }
+
+    .main-content {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .profile-info {
+        width: fit-content;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .main-container {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .panel {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .main-content {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+}

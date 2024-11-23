@@ -76,25 +76,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <h2>Detalles del Usuario</h2>
               
               <form class="form" action="" method="POST">
-  <div class="form-group">
-    <label class="form-label" for="fname">Nombre Completo</label>
-    <input class="form-input" type="text" name="fname" id="fname" value="dds">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="fname">Nombre Completo</label>
+                  <input class="form-input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>" readonly>
+                </div>
 
-  <div class="form-group">
-    <label class="form-label" for="email">Correo Electrónico</label>
-    <input class="form-input" type="email" name="email" id="email" value="prueba@prueba.com">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Correo Electrónico</label>
+                  <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" readonly>
+                </div>
 
-  <div class="form-group">
-    <label class="form-label" for="phone">Número de Teléfono</label>
-    <input class="form-input" type="tel" name="phone" id="phone" value="4355324">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Número de Teléfono</label>
+                  <input class="form-input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>" readonly>
+                </div>
 
-  <div class="form-group">
-    <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
-    <input class="form-input" type="date" name="birth_date" id="birth_date" value="">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
+                  <input class="form-input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>" readonly>
+                </div>
 
   <div class="button-group">
     <button class="save" type="submit" name="action" value="editProfile">Editar Perfil</button>

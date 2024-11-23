@@ -133,24 +133,24 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
           <div class="form-container">
             <form class="form" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-    <label class="form-label" for="fname">Nombre Completo</label>
-    <input class="form-input" type="text" name="fname" id="fname" value="dds">
-  </div>
+                  <label class="form-label" for="fname">Nombre Completo</label>
+                  <input class="form-input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>" readonly>
+                </div>
 
-  <div class="form-group">
-    <label class="form-label" for="email">Correo Electrónico</label>
-    <input class="form-input" type="email" name="email" id="email" value="prueba@prueba.com">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Correo Electrónico</label>
+                  <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" readonly>
+                </div>
 
-  <div class="form-group">
-    <label class="form-label" for="phone">Número de Teléfono</label>
-    <input class="form-input" type="tel" name="phone" id="phone" value="4355324">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Número de Teléfono</label>
+                  <input class="form-input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>" readonly>
+                </div>
 
-  <div class="form-group">
-    <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
-    <input class="form-input" type="date" name="birth_date" id="birth_date" value="">
-  </div>
+                <div class="form-group">
+                  <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
+                  <input class="form-input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>" readonly>
+                </div>
               <label for="profile_image" class="form-label">Cambiar Foto</label>
               <input type="file" class="form-input" name="profile_image" id="profile_image" accept="image/*">
 

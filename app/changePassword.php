@@ -88,25 +88,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="form-group">
         <label class="form-label">Nueva Contraseña</label>
-        <input class="form-input" type="password" name="op" placeholder="Contraseña Actual" required>
+        <input class="form-input" type="password" name="np" placeholder="Contraseña Actual" required>
        
         </div>
         <div class="form-group">
         <label class="form-label">Confirmar Nueva Contraseña</label>
-        <input class="form-input" type="password" name="op" placeholder="Contraseña Actual" required>
+        <input class="form-input" type="password" name="c_np" placeholder="Contraseña Actual" required>
        
-        </div>
-        <label class="form-group">Nueva Contraseña</label>
-        <input type="password" name="np" placeholder="Nueva Contraseña" required>
-        <br>
 
-        <label>Confirmar Nueva Contraseña</label>
-        <input type="password" name="c_np" placeholder="Confirmar Nueva Contraseña" required>
-        <br>
-
-        <button type="submit">CAMBIAR</button>
-        <a href="profile.php" class="ca">CANCELAR</a>
+        
         </div>
+        <div class="button-group">
+              <button class="cancel" type="submit" name="cancel" class="exit">Cancelar</button>
+                <button class="save" type="submit" name="save" class="save">Guardar Cambios</button>
+               
+              </div>
       </form>
     <?php endif; ?>
   </main>

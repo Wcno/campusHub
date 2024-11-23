@@ -12,7 +12,7 @@ if (!isset($_SESSION['user']['id'])) {
 }
 
 $userId = $_SESSION['user']['id'];
-$uploadDir = '../uploads/';
+$uploadDir = '/var/www/html/campusHub/uploads/';
 $webPath = '/campusHub/uploads/';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

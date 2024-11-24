@@ -8,13 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
         $db = db_connect();
         /*consulta y recuperación de eventos de la BD*/
-        $stmt = $db->query("SELECT * FROM events");
-        $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tables = ['users', 'category', 'locations', 'tags', 'events', 'inscriptions'];
+        foreach ($tables as $table) {
+            $stmt = $db->query("SELECT * FROM $table");
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $results[$table] = $data; 
+        }
 
         /*convertir los datos a formato JSON y se muestra de manera legible*/
         echo "<pre>" . json_encode([
             "status" => "Éxito",
-            "data" => $events
+            "data" => $results
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "</pre>";
         /*captura de excepción*/
     } catch (PDOException $e) {

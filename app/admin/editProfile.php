@@ -5,23 +5,16 @@ require_once '../../includes/bootstrap.php';
 
 $pdo = db_connect();
 
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['user']['id'])) {
-  header('Location: login.php');
-  exit;
-}
-
 $userId = $_SESSION['user']['id'];
 $uploadDir = '../../uploads/';
-$webPath = '/campusHub/uploads/';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['save'])) {
     // Capturar los datos del formulario
-    $name = htmlspecialchars(trim($_POST['fname'] ?? ''));
+    $name = htmlspecialchars(trim($_POST['name'] ?? ''));
     $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
     $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
-    $birthDate = $_POST['fecha-nacimiento'] ?? '';
+    $birthDate = $_POST['birth_date'] ?? '';
     $profileImagePath = $_SESSION['user']['img_profile'] ?? $webPath . 'default-profile.png';
 
     // Manejo de la imagen subida
@@ -30,9 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $uploadFilePath = $uploadDir . $fileName;
 
       // Verificar si el directorio existe, si no, crearlo
-      if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true);
-      }
+      if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
 
       // Validar permisos del directorio
       if (!is_writable($uploadDir)) {
@@ -49,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       // Mover la imagen al directorio especificado
       if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFilePath)) {
-        $profileImagePath = $webPath . $fileName; // Ruta accesible desde el navegador
+        $profileImagePath = $fileName; // Ruta accesible desde el navegador
       } else {
         echo "No se pudo mover el archivo de " . $_FILES['profile_image']['tmp_name'] . " a " . $uploadFilePath;
         exit;
@@ -80,10 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user']['img_profile'] = $profileImagePath;
 
     // Redirigir al perfil
-    header('Location: profile.php');
+    header('Location: profile');
     exit;
   } elseif (isset($_POST['cancel'])) {
-    header('Location: profile.php');
+    header('Location: profile');
     exit;
   }
 }
@@ -113,57 +104,68 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="main-container">
       <div class="panel">
         <div class="main-content">
-         <!-- Título Principal -->
-         <header class="profile-header">
+          <!-- Título Principal -->
+          <header class="profile-header">
             <h1>Editar Perfil</h1>
             <p>Gestiona tu información personal y actualiza tu configuración</p>
           </header>
 
           <!-- Contenedor principal de la información -->
-          <div class="profile-layout">
+          <div class="profile-layout card card-body">
             <!-- Sección de Foto de Perfil -->
             <div class="profile-picture-section">
               <h2>Foto de Perfil</h2>
-              <img class="profile-photo" src="<?php echo htmlspecialchars($_SESSION['user']['img_profile'] ?? 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png'); ?>" alt="Imagen de usuario">
+              <?php
+              $imagePath = '/uploads/' . ($user['img_profile'] ?? '');
+              $urlPath = parse_url(baseUrl($imagePath))['path'];
+              $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+              $source = !empty($user['img_profile']) && file_exists($fullImagePath)
+                ? baseUrl($imagePath)
+                :  'https://cdn-icons-png.flaticon.com/512/6676/6676023.png';
+              ?>
+              <img class="profile-photo" src="<?php echo htmlspecialchars($source) ?>" alt="Imagen de usuario">
             </div>
 
             <!-- Formulario de Datos -->
             <div class="form-container">
               <h2>Detalles del Usuario</h2>
-          <div class="form-container">
-            <form class="form" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                  <label class="form-label" for="fname">Nombre Completo</label>
-                  <input class="form-input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>" readonly>
-                </div>
+              <div class="form-container">
+                <form class="form" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label class="label" for="name">Nombre Completo</label>
+                    <input class="input" type="text" name="name" id="name" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>">
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="email">Correo Electrónico</label>
-                  <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" readonly>
-                </div>
+                  <div class="form-group">
+                    <label class="label" for="email">Correo Electrónico</label>
+                    <input class="input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>">
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="phone">Número de Teléfono</label>
-                  <input class="form-input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>" readonly>
-                </div>
+                  <div class="form-group">
+                    <label class="label" for="phone">Número de Teléfono</label>
+                    <input class="input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>">
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
-                  <input class="form-input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>" readonly>
-                </div>
-              <label for="profile_image" class="form-label">Cambiar Foto</label>
-              <input type="file" class="form-input" name="profile_image" id="profile_image" accept="image/*">
+                  <div class="form-group">
+                    <label class="label" for="birth_date">Fecha de Nacimiento</label>
+                    <input class="input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>">
+                  </div>
 
-              <div class="button-group">
-              <button class="cancel" type="submit" name="cancel" class="exit">Cancelar</button>
-                <button class="save" type="submit" name="save" class="save">Guardar Cambios</button>
-               
+                  <div class="form-group">
+                    <label for="profile_image" class="label">Cambiar Foto</label>
+                    <input type="file" class="input" name="profile_image" id="profile_image" accept="image/*">
+                  </div>
+
+                  <div class="button-group">
+                    <button class="btn btn-secondary" type="submit" name="cancel" class="exit">Cancelar</button>
+                    <button class="btn btn-primary" type="submit" name="save" class="save">Guardar Cambios</button>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
   </main>
 
 </body>

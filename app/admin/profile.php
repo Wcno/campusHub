@@ -6,10 +6,7 @@ require_once '../../includes/dbconnect.php';
 require_once '../../includes/bootstrap.php';
 
 $pdo = db_connect();
-if (!isset($_SESSION['user']['id'])) {
-  header('Location: ../../login.php');
-  exit;
-}
+
 // Obtener datos del usuario autenticado
 $id = $_SESSION['user']['id'];
 
@@ -18,25 +15,25 @@ $stmt->execute([':id' => $id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($row) {
-    $_SESSION['user'] = array_merge($_SESSION['user'], $row);
+  $_SESSION['user'] = array_merge($_SESSION['user'], $row);
 } else {
-    echo "Usuario no encontrado.";
-    exit;
+  echo "Usuario no encontrado.";
+  exit;
 }
 
 // Manejo del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ?? '';
+  $action = $_POST['action'] ?? '';
 
-    if ($action === 'editProfile') {
-        header('Location: editProfile.php');
-        exit;
-    } elseif ($action === 'changePassword') {
-        header('Location: changePassword.php');
-        exit;
-    } else {
-        echo "Acción no reconocida.";
-    }
+  if ($action === 'editProfile') {
+    header('Location: editProfile');
+    exit;
+  } elseif ($action === 'changePassword') {
+    header('Location: changePassword');
+    exit;
+  } else {
+    echo "Acción no reconocida.";
+  }
 }
 ?>
 
@@ -67,43 +64,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </header>
 
           <!-- Contenedor principal de la información -->
-          <div class="profile-layout">
+          <div class="profile-layout card card-body">
             <!-- Sección de Foto de Perfil -->
             <div class="profile-picture-section">
               <h2>Foto de Perfil</h2>
-              <img class="profile-photo" src="<?php echo htmlspecialchars($_SESSION['user']['img_profile'] ?? 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png'); ?>" alt="Imagen de usuario">
+              <?php
+              $imagePath = '/uploads/' . ($user['img_profile'] ?? '');
+              $urlPath = parse_url(baseUrl($imagePath))['path'];
+              $fullImagePath = $_SERVER['DOCUMENT_ROOT'] . $urlPath;
+
+              $source = !empty($user['img_profile']) && file_exists($fullImagePath)
+                ? baseUrl($imagePath)
+                :  'https://cdn-icons-png.flaticon.com/512/6676/6676023.png';
+              ?>
+              <img class="profile-photo" src="<?php echo htmlspecialchars($source) ?>" alt="Imagen de usuario">
             </div>
 
             <!-- Formulario de Datos -->
             <div class="form-container">
               <h2>Detalles del Usuario</h2>
-              
+
               <form class="form" action="" method="POST">
                 <div class="form-group">
-                  <label class="form-label" for="fname">Nombre Completo</label>
-                  <input class="form-input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>" readonly>
+                  <label class="label" for="fname">Nombre Completo</label>
+                  <input class="input" type="text" name="fname" id="fname" value="<?php echo htmlspecialchars($_SESSION['user']['name']); ?>" readonly>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="email">Correo Electrónico</label>
-                  <input class="form-input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" readonly>
+                  <label class="label" for="email">Correo Electrónico</label>
+                  <input class="input" type="email" name="email" id="email" value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" readonly>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="phone">Número de Teléfono</label>
-                  <input class="form-input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>" readonly>
+                  <label class="label" for="phone">Número de Teléfono</label>
+                  <input class="input" type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($_SESSION['user']['phone_number']); ?>" readonly>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="birth_date">Fecha de Nacimiento</label>
-                  <input class="form-input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>" readonly>
+                  <label class="label" for="birth_date">Fecha de Nacimiento</label>
+                  <input class="input" type="date" name="birth_date" id="birth_date" value="<?php echo htmlspecialchars($_SESSION['user']['birth_date']); ?>" readonly>
                 </div>
 
-  <div class="button-group">
-    <button class="save" type="submit" name="action" value="editProfile">Editar Perfil</button>
-    <button class="save" type="submit" name="action" value="changePassword">Cambiar Contraseña</button>
-  </div>
-</form>
+                <div class="button-group">
+                  <button class="save" type="submit" name="action" value="editProfile">Editar Perfil</button>
+                  <button class="save" type="submit" name="action" value="changePassword">Cambiar Contraseña</button>
+                </div>
+              </form>
 
             </div>
           </div>
@@ -115,4 +121,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
-

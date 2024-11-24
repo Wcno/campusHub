@@ -167,7 +167,7 @@ $tags = $pdo
             $isEnrolled = $stmt->rowCount() > 0;
         ?>
             <a href="../../app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
-              <div class="card card-body event-list-item">
+              <div class="card event-list-item">
                 <div class="img-container">
                   <?php
                   $imagePath = '/uploads/' . ($event['image_url'] ?? '');
@@ -178,7 +178,7 @@ $tags = $pdo
                   ?>
                   <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
                 </div>
-                <div class="event-info">
+                <div class="card-body event-info">
                   <h4 class="event-title"><?php echo htmlspecialchars($event['title']) ?></h4>
                   <div class="tags">
                     <?php if (!empty($event['tag'])) { ?>

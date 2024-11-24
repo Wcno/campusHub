@@ -25,28 +25,28 @@ try {
 
   // Filtrar por búsqueda
   if (!empty($search)) {
-      $query .= " AND (LOWER(events.title) LIKE LOWER(:search_title) 
+    $query .= " AND (LOWER(events.title) LIKE LOWER(:search_title) 
                       OR LOWER(events.description) LIKE LOWER(:search_description))";
-      $params[':search_title'] = '%' . $search . '%';
-      $params[':search_description'] = '%' . $search . '%';
+    $params[':search_title'] = '%' . $search . '%';
+    $params[':search_description'] = '%' . $search . '%';
   }
 
   // Filtrar por lugar
   if (!empty($location) && $location !== 'general') {
-      $query .= " AND locations.id = :location";
-      $params[':location'] = $location;
+    $query .= " AND locations.id = :location";
+    $params[':location'] = $location;
   }
 
   // Filtrar por tema
   if (!empty($tag)) {
-      $query .= " AND tags.id = :tag";
-      $params[':tag'] = $tag;
+    $query .= " AND tags.id = :tag";
+    $params[':tag'] = $tag;
   }
 
   // Filtrar por categorías
   if (!empty($category) && $category !== 'general') {
-      $query .= " AND category.id = :category";
-      $params[':category'] = $category;
+    $query .= " AND category.id = :category";
+    $params[':category'] = $category;
   }
 
   // Añadir ordenamiento
@@ -159,7 +159,7 @@ $tags = $pdo
       <div class="event-list">
         <?php foreach ($events as $event) { ?>
           <a href="../../app/events/view?id=<?php echo htmlspecialchars($event['id']) ?>">
-            <div class="card card-body event-list-item">
+            <div class="card event-list-item">
               <div class="img-container">
                 <?php
                 $imagePath = '/uploads/' . ($event['image_url'] ?? '');
@@ -170,7 +170,7 @@ $tags = $pdo
                 ?>
                 <img src="<?php echo baseUrl($source) ?? '' ?>" alt="event image" />
               </div>
-              <div class="event-info">
+              <div class="card-body event-info">
                 <h4 class="event-title"><?php echo $event['title'] ?></h4>
                 <div class="tags">
                   <?php if (!empty($event['tag'])) { ?>

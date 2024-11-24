@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if (!$user) {
-    $message = "Usuario no encontrado.";
+    $message = "Error: Usuario no encontrado.";
   } elseif (!password_verify($oldPassword, $user['password'])) {
     // Verifica si la contraseña antigua es correcta
-    $message = "La contraseña actual no es correcta.";
+    $message = "Error: La contraseña actual no es correcta.";
   } elseif ($newPassword !== $confirmPassword) {
     // Verifica si las nuevas contraseñas coinciden
-    $message = "La nueva contraseña y la confirmación no coinciden.";
+    $message = "Error: La nueva contraseña y la confirmación no coinciden.";
   } else {
     // Hashea la nueva contraseña
     $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $message = "Contraseña actualizada correctamente.";
       $success = true;
     } else {
-      $message = "Error al actualizar la contraseña.";
+      $message = "Error: No se puedo actualizar la contraseña.";
     }
   }
 }
@@ -70,50 +70,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php loadComponent('top-wrapper'); ?>
 
   <main class="content-wrapper">
-    <?php if (isset($message)): ?>
-      <!-- Mensaje de éxito o error -->
-      <div class="message <?php echo isset($success) && $success ? 'success' : 'error'; ?>">
-        <p><?php echo htmlspecialchars($message); ?></p>
-        <a href="<?php echo isset($success) && $success ? 'profile.php' : 'changePassword.php'; ?>">
-          <?php echo isset($success) && $success ? 'Aceptar' : 'Intentar de nuevo'; ?>
-        </a>
-      </div>
-    <?php else: ?>
-      <!-- Formulario de cambio de contraseña -->
-      <div class="main-container">
-        <div class="panel">
-          <div class="main-content">
-            <header class="profile-header">
-              <h1>Cambiar Contraseña</h1>
-              <p>Introduce tu contraseña actual y define una nueva</p>
-            </header>
+    <!-- Formulario de cambio de contraseña -->
+    <div class="main-container">
+      <div class="panel">
+        <div class="main-content">
+          <header class="profile-header">
+            <h1>Cambiar Contraseña</h1>
+            <p>Introduce tu contraseña actual y define una nueva</p>
+          </header>
 
-            <div class="form-container">
-              <form class="form" action="changePassword.php" method="POST">
-                <div class="form-group">
-                  <label class="form-label" for="op">Contraseña Actual</label>
-                  <input class="form-input" type="password" name="op" id="op" placeholder="Contraseña Actual" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="np">Nueva Contraseña</label>
-                  <input class="form-input" type="password" name="np" id="np" placeholder="Nueva Contraseña" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="c_np">Confirmar Nueva Contraseña</label>
-                  <input class="form-input" type="password" name="c_np" id="c_np" placeholder="Repetir Contraseña" required>
-                </div>
-
-                <!-- Botones de acción -->
-                <div class="button-group">
-                  <button class="cancel" type="submit" name="cancel">Cancelar</button>
-                  <button class="save" type="submit" name="save">Guardar Cambios</button>
-                </div>
-              </form>
+          <?php if (isset($message)) : ?>
+            <div class="<?= strpos($message, 'Error') !== false ? 'error-message' : 'success-message' ?>">
+              <?php if (strpos($message, 'Error') !== false) { ?>
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                </svg>
+              <?php } else { ?>
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+              <?php } ?>
+              <?= $message ?>
             </div>
+          <?php endif; ?>
+
+          <div class="form-container card card-body">
+            <form class="form" method="POST">
+              <div class="form-group">
+                <label class="label" for="op">Contraseña Actual</label>
+                <input class="input" type="password" name="op" id="op" placeholder="Contraseña Actual" required>
+              </div>
+              <div class="form-group">
+                <label class="label" for="np">Nueva Contraseña</label>
+                <input class="input" type="password" name="np" id="np" placeholder="Nueva Contraseña" required>
+              </div>
+              <div class="form-group">
+                <label class="label" for="c_np">Confirmar Nueva Contraseña</label>
+                <input class="input" type="password" name="c_np" id="c_np" placeholder="Repetir Contraseña" required>
+              </div>
+
+              <!-- Botones de acción -->
+              <div class="button-group">
+                <button class="btn btn-secondary" name="cancel" class="exit" onclick="window.location.href = 'profile'">Cancelar</button>
+                <button class="btn btn-primary" type="submit" name="save">Guardar Cambios</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    <?php endif; ?>
+    </div>
   </main>
 </body>
 

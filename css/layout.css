@@ -157,3 +157,20 @@
   height: 100%;
   object-fit: cover;
 }
+
+.footer {
+  background: white;
+  padding: 0.25rem 1rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: fixed;
+  left: 16rem;
+  bottom: 0;
+  right: 0;
+}
+
+.copywrite-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

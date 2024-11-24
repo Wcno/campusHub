@@ -120,6 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </div>
   </main>
+
+  <?php loadComponent('bottom-wrapper'); ?>
 </body>
 
 </html>

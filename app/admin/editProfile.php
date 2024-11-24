@@ -168,6 +168,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
   </main>
 
+  <?php loadComponent('bottom-wrapper') ?>
 </body>
 
 </html>
